@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102d28">
+  <title>Gradeache</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Gradeache home"><span class="brand-mark">G</span><span>Gradeache<span class="brand-dot">.</span></span></a>
+  </header>
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy"><div class="eyebrow"><span>✳</span> YOUR DEGREE, IN FOCUS</div><h1>Make your next<br>semester <em>count.</em></h1><p>Track your GPA, understand your standing, and see what it could take to reach your degree goal.</p><div class="hero-meta"><span>01 <i>Track</i></span><b>·</b><span>02 <i>Plan</i></span><b>·</b><span>03 <i>Progress</i></span></div></div>
+      <div class="hero-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="art-sun"></div><div class="art-card"><span>YOUR PROGRESS</span><strong>In motion<span>.</span></strong><div class="art-rule"><i></i></div><small>One course at a time</small></div><div class="art-star star-a">✳</div><div class="art-star star-b">✦</div><div class="art-pill">✦ &nbsp; KEEP GOING</div><div class="art-number">05</div></div>
+    </section>
+    <section class="dashboard" aria-label="GPA planner">
+      <div class="main-column">
+        <section class="panel setup-panel">
+          <div class="section-heading"><div><div class="eyebrow dark-eyebrow">01 / SET YOUR CONTEXT</div><h2>Your programme</h2></div><span class="step-badge">SETUP</span></div>
+          <div class="form-grid">
+            <label class="field"><span>Programme name <small>optional</small></span><input id="programme" type="text" placeholder="e.g. BSc Computer Science"></label>
+            <label class="field"><span>Programme duration</span><div class="select-wrap"><select id="duration"><option value="3">3 years</option><option value="4" selected>4 years</option><option value="5">5 years</option><option value="6">6 years</option></select></div></label>
+            <label class="field"><span>Current study year</span><div class="select-wrap"><select id="studyYear"><option value="1">Year 1</option><option value="2">Year 2</option><option value="3">Year 3</option><option value="4">Year 4</option><option value="5">Year 5</option><option value="6">Year 6</option></select></div></label>
+            <label class="field"><span>Current semester</span><div class="select-wrap"><select id="studySemester"><option>Semester 1</option><option>Semester 2</option><option>Recess</option><option>Internship</option></select></div></label>
+          </div>
+          <p class="helper-note"><span>ⓘ</span> Duration sets your expected finish point. Include all completed semesters below for an accurate cumulative GPA.</p>
+        </section>
+        <div class="mode-switch" role="group" aria-label="GPA entry mode"><button type="button" class="mode-tab active" data-mode="courses">Course marks</button><button type="button" class="mode-tab" data-mode="quick">Enter semester GPA</button></div>
+        <section class="panel courses-panel" id="coursesPanel">
+          <div class="section-heading courses-heading"><div><div class="eyebrow dark-eyebrow">02 / ENTER YOUR RESULTS</div><h2>Courses &amp; marks</h2><p class="section-sub">Add courses by semester. Audited courses are recorded but excluded from GPA.</p></div><button class="button button-outline" id="addSemester"><span>＋</span> Add semester</button></div>
+          <div id="semesters" class="semester-list"></div>
+          <button class="add-first" id="addCourseGlobal">＋ &nbsp; Add a course to the latest semester</button>
+          <div class="grading-key"><div><span class="key-icon">◎</span><span><b>Makerere scale</b><small>Points are assigned from final marks</small></span></div><div class="grade-chips"><span>A+ 5</span><span>A 5</span><span>B+ 4.5</span><span>B 4</span><button id="showScale">View full scale ↗</button></div></div>
+        </section>
+        <section class="panel courses-panel" id="quickPanel" hidden>
+          <div class="accuracy-note" role="note"><strong>Accuracy note</strong><p>Entering semester GPAs is a convenient estimate. The course marks method is generally more precise because it weighs each counted course by its own credit units. GPA-only results depend on the accuracy of the GPA and credit totals you enter, and may be affected by rounded GPAs or retake rules.</p></div>
+          <div class="section-heading"><div><div class="eyebrow dark-eyebrow">02 / QUICK ENTRY</div><h2>Enter your semester GPAs</h2><p class="section-sub">Add semester GPAs and counted credits to calculate your CGPA. Recess and Internship are standalone periods.</p></div></div>
+          <div class="quick-base"><label class="field"><span>Starting CGPA <small>optional</small></span><input id="baseGpa" type="number" min="0" max="5" step="0.01" placeholder="e.g. 3.75"></label><label class="field"><span>Credits included in starting CGPA</span><input id="baseCredits" type="number" min="0" step="0.5" placeholder="e.g. 60"></label></div>
+          <div id="gpaEntries" class="semester-list"></div><button class="button button-outline" id="addGpaEntry" type="button">+ Add GPA entry</button>
+          <p class="helper-note">Enter the counted credit units behind each GPA. Exclude audited courses and their credits.</p>
+        </section>
+        <section class="panel goals-panel">
+          <div class="section-heading"><div><div class="eyebrow dark-eyebrow">03 / LOOK AHEAD</div><h2>Your degree goal</h2><p class="section-sub">Choose a class target and estimate future credits for a useful projection.</p></div><span class="goal-icon">↗</span></div>
+          <div class="goal-fields">
+            <label class="field"><span>Target class</span><div class="select-wrap"><select id="targetClass"><option value="4.4">First Class · 4.40</option><option value="3.6">Second Class Upper · 3.60</option><option value="2.8">Second Class Lower · 2.80</option></select></div></label>
+            <label class="field"><span>Credits per regular semester</span><input id="futureCredits" type="number" min="1" max="60" value="20"></label>
+            <label class="field"><span>Recess semesters in this plan</span><input id="recessSemesters" type="number" min="0" max="20" step="1" value="3"></label>
+            <label class="field"><span>Goal deadline</span><div class="select-wrap"><select id="goalDeadline"><option value="degree">By end of my degree</option><option value="year">By end of this study year</option><option value="semester">By end of this semester</option></select></div></label>
+          </div>
+          <div id="recommendation" class="recommendation" aria-live="polite"></div>
+        </section>
+      </div>
+      <aside class="side-column">
+        <section class="score-card"><div class="score-top"><span>YOUR CURRENT CGPA</span><span class="score-star">✳</span></div><div class="score-number" id="cgpa">—<span>/ 5.00</span></div><div class="class-pill" id="classLabel">ADD YOUR RESULTS</div><div class="score-divider"></div><div class="score-stats"><div><span>GPA THIS SEMESTER</span><b id="semesterGpa">—</b></div><div><span>COUNTED CREDITS</span><b id="countedCredits">0</b></div></div><div class="progress-wrap"><div><span>Progress toward degree</span><b id="progressLabel">Year 1 of 4</b></div><div class="progress-track"><i id="progressBar"></i></div></div><div class="score-foot">Audited courses don’t count toward GPA or credit totals.</div></section>
+        <section class="tip-card"><div class="tip-spark">✳</div><div class="eyebrow dark-eyebrow">A QUICK NOTE</div><p id="tipText">A steady semester builds a strong cumulative GPA. Add your course marks to get started.</p><span class="tip-link">SMALL STEPS ADD UP <b>↗</b></span></section>
+        <div class="privacy-note"><span>◉</span><span><b>Your results stay yours.</b><br>This planner saves data only in this browser.</span></div>
+      </aside>
+    </section>
+    <section class="panel guide-panel" aria-labelledby="guideTitle">
+      <div class="section-heading"><div><div class="eyebrow dark-eyebrow">START HERE</div><h2 id="guideTitle">User guide</h2><p class="section-sub">A quick walkthrough of the planner and what to enter.</p></div></div>
+      <details><summary>1. Set up your programme</summary><p>Enter your programme duration, current study year, and current period. The planner keeps your information in this browser.</p></details>
+      <details><summary>2. Choose how to enter results</summary><p><b>Course marks:</b> Add each period, choose its type, choose a year for Semester 1 or 2, then enter each course's credit units and final mark. Mark audited courses so they are left out of GPA and counted credits. Recess and Internship are standalone periods. Recess courses default to 5 credits; adjust the course credits if needed.</p><p><b>Enter semester GPA:</b> Enter a GPA from 0 to 5 and the total counted credits for each period. To combine with an existing CGPA, enter that CGPA and the credit units already included in it. Leave audited credits out.</p></details>
+      <details><summary>3. Read your results</summary><p>CGPA is a credit-weighted average. The course method calculates grade points from marks and weights each course by its credit units. The GPA-only method weights each entered semester GPA by its counted credits. The semester GPA card follows the current year and period you selected above.</p></details>
+      <details><summary>4. Get a degree goal estimate</summary><p>Choose a target class and deadline. Enter a typical regular-semester credit load and the number of Recess periods in your plan. Each estimated Recess period is counted as 5 credits. The recommendation is an estimate; confirm classification and retake rules with your programme.</p></details>
+      <details><summary>5. Edit or remove entries</summary><p>Use “Add semester” or “Add GPA entry” to create a blank entry, then choose its period and year where applicable. Use the × control on an entry to remove it. Your results are saved locally in this browser.</p></details>
+    </section>
+    
+  </main>
+  <dialog id="scaleDialog"><div class="dialog-head"><div><div class="eyebrow dark-eyebrow">MAKERERE MARKS</div><h2>Grade point scale</h2></div><button class="close-dialog" aria-label="Close">×</button></div><div class="scale-table"><div class="scale-row scale-header"><span>MARK</span><span>GRADE</span><span>POINTS</span></div><div id="scaleRows"></div></div><p class="dialog-note">Grade bands follow Makerere University’s published grading guide. Programme and cohort regulations may differ.</p></dialog>
+  <script src="app.js"></script>
+</body>
+</html>
