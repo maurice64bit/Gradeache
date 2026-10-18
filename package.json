@@ -1,0 +1,44 @@
+{
+  "name": "gradeache",
+  "version": "2.0.0",
+  "description": "Makerere GPA and CGPA planner",
+  "main": "main.cjs",
+  "author": "Gradeache",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "build:win": "electron-builder --win portable"
+  },
+  "devDependencies": {
+    "electron": "^44.9.0",
+    "electron-builder": "^26.15.3"
+  },
+  "build": {
+    "appId": "ug.ac.mak.gradeache",
+    "productName": "Gradeache",
+    "artifactName": "Gradeache-v${version}.${ext}",
+    "asar": true,
+    "files": [
+      "index.html",
+      "app.js",
+      "styles.css",
+      "main.cjs",
+      "preload.cjs",
+      "package.json"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    }
+  }
+}

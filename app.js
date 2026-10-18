@@ -1,4 +1,4 @@
-/* Gradeache: academic records stay in this browser. */
+/* Gradeache: academic records stay on this Windows account. */
 const SCALE=[{min:90,max:100,grade:'A+',points:5,meaning:'Exceptional'},{min:80,max:89,grade:'A',points:5,meaning:'Excellent'},{min:75,max:79,grade:'B+',points:4.5,meaning:'Very good'},{min:70,max:74,grade:'B',points:4,meaning:'Good'},{min:65,max:69,grade:'C+',points:3.5,meaning:'Fairly good'},{min:60,max:64,grade:'C',points:3,meaning:'Fair'},{min:55,max:59,grade:'D+',points:2.5,meaning:'Pass'},{min:50,max:54,grade:'D',points:2,meaning:'Marginal pass'},{min:45,max:49,grade:'E',points:1.5,meaning:'Marginal fail'},{min:40,max:44,grade:'E-',points:1,meaning:'Clear fail'},{min:0,max:39,grade:'F',points:0,meaning:'Bad fail'}];
 const TYPES=['Semester 1','Semester 2','Recess','Internship'],STORE='gradeache-makerere-v1',LEGACY_STORE='gradepath-makerere-v1';let state;
 const blankCourse=()=>({name:'',credits:'',mark:'',audited:false});
